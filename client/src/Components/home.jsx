@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect , useState} from "react";
 //import { Link } from 'react-router-dom';
 import "./home.css";
 
@@ -8,12 +8,37 @@ const home = () => {
     window.location.href = path;
   };
 
+
+  const [typingText, setTypingText] = useState("");
+
+  useEffect(() => {
+    const text = "Track My Tax";
+    let index = 0;
+
+    const type = () => {
+      if (index < text.length) {
+        setTypingText((prevText) => prevText + text.charAt(index));
+        index++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => {
+          setTypingText("");
+          index = 0;
+          type();
+        }, 2000);
+      }
+    };
+
+    type();
+  }, []);
+
+
   return (
   <div>
-    <div>
-            <h1 className="homeText">Track My Tax</h1>
-            
-    </div>
+     <div>
+       
+        <h1 className="homeText">Track My Tax</h1>
+      </div>
 
    <div className="home-content">
       <div className="button-group">
@@ -41,19 +66,6 @@ const home = () => {
       </div>
     </div>
 
-    {/* // <div className="home-content">
-    //   <div className="button-group">
-    //     <button onClick={() => handleButtonClick('/CentralGov')}>Central Gov</button>
-    //     <button onClick={() => handleButtonClick('/StateGov')}>State Gov</button>
-    //     <button onClick={() => handleButtonClick('/DistrictGov')}>District Gov</button>
-    //     <button onClick={() => handleButtonClick('/HealthCare')}>Health Care</button>
-    //     <button onClick={() => handleButtonClick('/MLA')}>MLA</button>
-    //     <button onClick={() => handleButtonClick('/Contractor')}>Contractor</button>
-    //     <button onClick={() => handleButtonClick('/MaterialSupplier')}>Material Supplier</button>
-    //     <button onClick={() => handleButtonClick('/LabourSupplier')}>Labour Supplier</button>
-    //     <button onClick={() => handleButtonClick('/Roads&Transport')}>Road & Transport</button>
-    //   </div>
-    // </div> */}
 
     </div> 
   );
