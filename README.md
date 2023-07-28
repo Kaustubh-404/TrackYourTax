@@ -8,7 +8,7 @@ Track My Tax is a web application built on web3, using TRUFFLE and REACTJS, to t
 - [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
